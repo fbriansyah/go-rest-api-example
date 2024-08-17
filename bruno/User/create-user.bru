@@ -1,0 +1,40 @@
+meta {
+  name: Create User
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/users/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "fullname": "Febrian",
+      "email": "febrian4@mail.com",
+      "password": "1234567890"
+  }
+}
+
+assert {
+  res.body.message: eq User created successfully
+  res.status: eq 201
+}
+
+script:pre-request {
+  const {faker} = require("@faker-js/faker");
+  const fullname = faker.person.fullName();
+  const email = faker.internet.email();
+  
+  req.setBody({
+    fullname,
+    email,
+    password:"1234567890"
+  })
+}
+
+docs {
+  # Create User
+}

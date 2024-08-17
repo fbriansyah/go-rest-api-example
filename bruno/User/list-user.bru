@@ -1,0 +1,19 @@
+meta {
+  name: List User
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/users/?fullname=v
+  body: json
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  # Get All User by Query
+}

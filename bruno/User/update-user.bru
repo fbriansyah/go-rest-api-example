@@ -1,0 +1,21 @@
+meta {
+  name: Update User
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{base_url}}/users/:id
+  body: json
+  auth: none
+}
+
+params:path {
+  id: 6d49d57c-9674-46ba-82b0-8a7592bc5aef
+}
+
+body:json {
+  {
+    "fullname": "Febriansyah Nuur"
+  }
+}
